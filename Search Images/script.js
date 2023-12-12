@@ -167,7 +167,11 @@ let page = 1;
 
 async function searchImages()  {
     inputData = inputEl.value;
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}
+    if (inputData === ""){
+        alert("Please Enter Data!");
+        
+    }else {
+        const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}
     &client_id=${accessKeyForUnsplash}`
     // console.log(url);
     const response = await fetch(url);
@@ -199,6 +203,8 @@ async function searchImages()  {
     if(page > 1){
         showMoreBtn.style.display = "block";
     }
+    }
+    
 }
 
 formEl.addEventListener("submit", (event) => {
